@@ -1,6 +1,7 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart' ;
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/dailyui/singup.dart';
-class DailyUI extends StatelessWidget {
+class SingUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,9 +11,7 @@ class DailyUI extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             _header(),
-            _formLoginAndFacebook(),
-            SizedBox(height: 20.0,),
-            _footer(context),
+            _formLoginAndFacebook(context),
           ],
         ),
       ),
@@ -23,20 +22,11 @@ class DailyUI extends StatelessWidget {
     return Container(
       child: Stack(
         children: <Widget>[
+
           Container(
-            padding: EdgeInsets.fromLTRB(30.0, 115, 0, 0),
+            padding: EdgeInsets.fromLTRB(30, 115, 0, 0),
             child: Text(
-              'Hello',
-              style: TextStyle(
-                fontSize: 80,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.fromLTRB(30, 190, 0, 0),
-            child: Text(
-              'There',
+              'SingUp',
               style: TextStyle(fontSize: 80, fontWeight: FontWeight.bold),
             ),
           ),
@@ -50,7 +40,7 @@ class DailyUI extends StatelessWidget {
                   ),
                 ),*/
           Container(
-            padding: EdgeInsets.fromLTRB(263.0, 190, 0, 0),
+            padding: EdgeInsets.fromLTRB(300.0, 132, 0, 0),
             child: Text(
               '.',
               style: TextStyle(
@@ -63,9 +53,9 @@ class DailyUI extends StatelessWidget {
       ),
     );
   }
-  Widget _formLoginAndFacebook(){
+  Widget _formLoginAndFacebook(BuildContext context){
     return  Container(
-      padding: EdgeInsets.only(top: 120, left: 30, right: 30),
+      padding: EdgeInsets.only(top: 40, left: 30, right: 30),
       child: Column(
         children: <Widget>[
           TextField(
@@ -98,21 +88,24 @@ class DailyUI extends StatelessWidget {
                   )),
             ),
           ),
-          Container(
-            alignment: Alignment(1.0, 0.0),
-            padding: EdgeInsets.only(top: 15.0, left: 20.0),
-            child: InkWell(
-              child: Text(
-                'Forgot Password',
-                style: TextStyle(
-                    color: Colors.green,
-                    fontWeight: FontWeight.bold,
-                    decoration: TextDecoration.underline),
+          SizedBox(
+            height: 20.0,
+          ),
+          TextField(
+            decoration: InputDecoration(
+              labelText: 'NICK NAME',
+              labelStyle: TextStyle(
+                color: Colors.black26,
+                fontWeight: FontWeight.bold,
               ),
+              focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.green,
+                  )),
             ),
           ),
           SizedBox(
-            height: 40,
+            height: 60,
           ),
           Container(
             height: 40.0,
@@ -125,7 +118,7 @@ class DailyUI extends StatelessWidget {
                 onTap: () {},
                 child: Center(
                   child: Text(
-                    'LOGIN',
+                    'SINGUP',
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
@@ -139,65 +132,35 @@ class DailyUI extends StatelessWidget {
           Container(
             height: 40.0,
             color: Colors.transparent,
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.black,
-                  width: 1.0,
-                  style: BorderStyle.solid,
-                ),
-                color: Colors.transparent,
-                borderRadius: BorderRadius.circular(
-                  20.0,
-                ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Center(
-                    child: ImageIcon(
-                        AssetImage('assets/images/facebook.png')),
+            child: GestureDetector(
+              onTap: ()=> Navigator.pop(context),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 1.0,
+                    style: BorderStyle.solid,
                   ),
-                  SizedBox(
-                    width: 8,
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(
+                    20.0,
                   ),
-                  Center(
-                    child: Text(
-                      'Log With Facebook',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
+                ),
+                child:Center(
+                  child: Text(
+                    'Go Back ',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
                     ),
-                  )
-                ],
+                  ),
+                )
+                ,
               ),
             ),
           )
         ],
       ),
     );
-  }
-  Widget _footer(BuildContext context) {
-  return Row(
- mainAxisAlignment: MainAxisAlignment.center,
-  children: <Widget>[
-      Text('New To Spotify'),
-    SizedBox(width: 5.0,),
-    InkWell(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>SingUp()));
-      },
-      child: Text(
-        'Register',
-        style: TextStyle(
-          color: Colors.green,
-          fontWeight: FontWeight.bold,
-          decoration: TextDecoration.underline,
-        ),
-      ),
-    )
-  ],
-  );
   }
 }
 
